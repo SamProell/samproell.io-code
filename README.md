@@ -5,7 +5,7 @@ Here is a list of articles and corresponding code folders:
 
 <table>
   <th>Article</th>
-  <th></th>
+  <th>📂</th>
   <tr>
     <td> <a href="https://www.samproell.io/posts/yarppg/yarppg-face-detection-with-mediapipe/">Facial landmark detection made easy with MediaPipe</a>
     </td>
