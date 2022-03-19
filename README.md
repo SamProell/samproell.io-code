@@ -13,4 +13,14 @@ Here is a list of articles and corresponding code folders:
     <a href="posts/yarppg/yarppg-face-detection-with-mediapipe/">Folder</a>
     </td>
   </tr>
+  <tr>
+    <td>
+      <a href="https://www.samproell.io/posts/yarppg/yarppg-extract-heartbeat-signals/">
+        Extracting heartbeat signals from webcam video
+      </a>
+    </td>
+    <td>
+    <a href="posts/yarppg/yarppg-extract-heartbeat-signals/">Folder</a>
+    </td>
+  </tr>
 </table>
