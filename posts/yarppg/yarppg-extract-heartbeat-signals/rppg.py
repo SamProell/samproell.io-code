@@ -1,11 +1,8 @@
 # rppg.py
 
 from collections import namedtuple
-from datetime import datetime
 
-import numpy as np
 from PyQt5.QtCore import pyqtSignal, QObject
-import mediapipe as mp
 import cv2
 
 from camera import Camera
