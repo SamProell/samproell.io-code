@@ -30,7 +30,7 @@ Here is a list of articles and corresponding code folders:
         </a>
     </td>
     <td>
-    <a href="posts/yarppg/yarppg-live-digital-filters/">Folder</a>
+    <a href="posts/yarppg/yarppg-live-digital-filter/">Folder</a>
     </td>
   </tr>
 </table>
