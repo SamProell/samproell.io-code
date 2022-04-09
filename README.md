@@ -23,4 +23,14 @@ Here is a list of articles and corresponding code folders:
     <a href="posts/yarppg/yarppg-extract-heartbeat-signals/">Folder</a>
     </td>
   </tr>
+  <tr>
+    <td>
+        <a href="https://www.samproell.io/posts/yarppg/yarppg-live-digital-filter/">
+            Digital filters for live signal processing in Python
+        </a>
+    </td>
+    <td>
+    <a href="posts/yarppg/yarppg-live-digital-filters/">Folder</a>
+    </td>
+  </tr>
 </table>

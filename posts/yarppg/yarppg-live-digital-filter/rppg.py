@@ -1,15 +1,14 @@
 # rppg.py
 
 from collections import namedtuple
-from datetime import datetime
 
-import numpy as np
-from PyQt5.QtCore import pyqtSignal, QObject
-import mediapipe as mp
 import cv2
+import scipy.signal
+from PyQt5.QtCore import QObject, pyqtSignal
 
 from camera import Camera
 from detector import ROIDetector
+from digitalfilter import LiveLFilter, LiveSosFilter
 
 RppgResults = namedtuple("RppgResults", ["rawimg",
                                          "roimask",
@@ -17,11 +16,12 @@ RppgResults = namedtuple("RppgResults", ["rawimg",
                                          "signal",
                                          ])
 
+
 class RPPG(QObject):
 
     rppg_updated = pyqtSignal(RppgResults)
 
-    def __init__(self, parent=None, video=0):
+    def __init__(self, parent=None, video=0, filter_function=None):
         """rPPG model processing incoming frames and emitting calculation
         outputs.
 
@@ -37,6 +37,12 @@ class RPPG(QObject):
         self._cam.frame_received.connect(self.on_frame_received)
 
         self.detector = ROIDetector()
+
+        if filter_function is None:
+            self.filter_function = lambda x: x  # pass values unfiltered
+        else:
+            self.filter_function = filter_function
+
         self.signal = []
 
     def on_frame_received(self, frame):
@@ -46,7 +52,7 @@ class RPPG(QObject):
         roimask, results = self.detector.process(frame)
 
         r, g, b, a = cv2.mean(rawimg, mask=roimask)
-        self.signal.append(g)
+        self.signal.append(self.filter_function(g))
 
         self.rppg_updated.emit(RppgResults(rawimg=rawimg,
                                            roimask=roimask,
@@ -63,3 +69,17 @@ class RPPG(QObject):
         """
         self._cam.stop()
         self.detector.close()
+
+
+def get_heartbeat_filter(order=4, cutoff=[0.5, 2.5], btype="bandpass", fs=30,
+                         output="ba"):
+    """Create live filter with lfilter or sosfilter implmementation.
+    """
+    coeffs = scipy.signal.iirfilter(order, Wn=cutoff, fs=fs, btype=btype,
+                                    ftype="butter", output=output)
+
+    if output == "ba":
+        return LiveLFilter(*coeffs)
+    elif output == "sos":
+        return LiveSosFilter(coeffs)
+    raise NotImplementedError(f"Unknown output {output!r}")
