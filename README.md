@@ -33,4 +33,14 @@ Here is a list of articles and corresponding code folders:
     <a href="posts/yarppg/yarppg-live-digital-filter/">Folder</a>
     </td>
   </tr>
+  <tr>
+    <td>
+        <a href="https://www.samproell.io/posts/yarppg/peak-finding-python-js/">
+            Finding peaks in noisy signals (with Python and JavaScript)
+        </a>
+    </td>
+    <td>
+    <a href="posts/yarppg/peak-finding-python-js/">Folder</a>
+    </td>
+  </tr>
 </table>
