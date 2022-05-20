@@ -5,7 +5,10 @@ Here is a list of articles and corresponding code folders:
 
 <table>
   <th>Article</th>
-  <th>📂</th>
+  <th style="text-align: center;">📂</th>
+  <tr>
+    <td colspan="2"> <strong>Remote PPG</strong>
+    </td>
   <tr>
     <td> <a href="https://www.samproell.io/posts/yarppg/yarppg-face-detection-with-mediapipe/">Facial landmark detection made easy with MediaPipe</a>
     </td>
@@ -33,14 +36,20 @@ Here is a list of articles and corresponding code folders:
     <a href="posts/yarppg/yarppg-live-digital-filter/">Folder</a>
     </td>
   </tr>
+
+
+  <tr>
+    <td colspan="2"> <strong>Signal Processing</strong>
+    </td>
+  <tr>
   <tr>
     <td>
-        <a href="https://www.samproell.io/posts/yarppg/peak-finding-python-js/">
+        <a href="https://www.samproell.io/posts/signal/peak-finding-python-js/">
             Finding peaks in noisy signals (with Python and JavaScript)
         </a>
     </td>
     <td>
-    <a href="posts/yarppg/peak-finding-python-js/">Folder</a>
+    <a href="posts/signal/peak-finding-python-js/">Folder</a>
     </td>
   </tr>
 </table>
