@@ -13,13 +13,18 @@ if __name__ == "__main__":
     yraw = ys + yerr
 
     nshort = 75
-    tshort, yshort = ts[:nshort], yraw[:nshort]
-    short_peaks, _ = scipy.signal.find_peaks(yshort)
+    tshort, yrawshort, yshort = ts[:nshort], yraw[:nshort], ys[:nshort]
+    short_peaks, _ = scipy.signal.find_peaks(yrawshort)
+    short_peaks_nonoise, _ = scipy.signal.find_peaks(yshort)
 
     plt.figure(figsize=[6.4, 2.4])
-    plt.plot(tshort, yshort, label="Noisy signal")
+    plt.plot(tshort, yrawshort, label="Noisy signal")
     plt.vlines(tshort[short_peaks], *plt.ylim(), label="Peaks",
-               color=".2", alpha=0.5, ls="--")
+               color=".2", alpha=0.3, ls="--")
+
+    plt.plot(tshort, yshort, label="Smooth signal")
+    plt.vlines(tshort[short_peaks_nonoise], *plt.ylim(), label="Clean peaks",
+               color="C2", ls="--")
     plt.xlabel("Time / s")
     plt.ylabel("Amplitude")
     plt.tight_layout()
