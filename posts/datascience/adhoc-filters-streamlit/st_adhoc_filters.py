@@ -3,11 +3,8 @@ import pandas as pd
 from matplotlib import pyplot as plt
 import seaborn as sns
 
-sns.set_style("darkgrid")
-plt.rcParams["axes.prop_cycle"] = \
-    "cycler('color', ['078C7E','d81159','fbb13c','73d2de','8f2d56'])"
-
 st.set_page_config(page_title="Ad-hoc data filters", page_icon="📈")
+sns.set_style("darkgrid")
 
 @st.cache
 def read_data(uploaded_file):
