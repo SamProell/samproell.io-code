@@ -3,15 +3,21 @@ import pandas as pd
 from matplotlib import pyplot as plt
 import seaborn as sns
 
+
 st.set_page_config(page_title="Ad-hoc data filters", page_icon="📈")
 sns.set_style("darkgrid")
+
 
 @st.cache
 def read_data(uploaded_file):
     return pd.read_csv(uploaded_file)
 
+
 def create_slicer(df, col):
-    """Create a data slicer depending on column data type (multiselct/slider).
+    """Create a data filter depending on column data type (multiselect/slider).
+
+    Filters are only created for 'number' and 'object' columns.
+    Returns `None` otherwise.
     """
     if col in df.select_dtypes(include="number"):
         if col in df.select_dtypes(include="integer"):
@@ -24,6 +30,7 @@ def create_slicer(df, col):
         return st.multiselect(col, options, default=options)
     return None
 
+
 def apply_slicers(df, filters):
     """Filter dataset according to slicer selections.
     """
@@ -35,6 +42,7 @@ def apply_slicers(df, filters):
             df = df.query(f"{col} in @selection")
     return df
 
+
 def plot_regression(df, x, y, hue, regression=True):
     """Create (colored) scatter plot with optional regression line.
     """
@@ -43,9 +51,10 @@ def plot_regression(df, x, y, hue, regression=True):
     sns.scatterplot(data=df, x=x, y=y, hue=hue, alpha=0.75, palette=palette)
 
     if regression:
-        sns.regplot(data=df, x=x, y=y, scatter=False, line_kws=dict(color=".3"))
+        sns.regplot(data=df, x=x, y=y, scatter=False, line_kws={"color": ".3"})
 
     return fig
+
 
 """# Quick analysis with ad-hoc filters
 
@@ -61,6 +70,9 @@ you may specify an arbitrary query which will be interpreted with
 `pd.DataFrame.query`.
 """
 
+# ==================================================================== #
+#                               INPUTS                                 #
+# ==================================================================== #
 datafile = st.sidebar.file_uploader("Upload dataset", ["csv"])
 if datafile is None:
     st.info("""Upload a dataset (.csv) in the sidebar to get started.""")
@@ -68,8 +80,13 @@ if datafile is None:
 
 data = read_data(datafile).copy()
 
+# ==================================================================== #
+#                          FILTER DEFINITION                           #
+# ==================================================================== #
+# get list of columns used for ad-hoc filters
 filter_cols = st.sidebar.multiselect("Filter columns", data.columns)
 
+# create filters for each selected column
 filters = {}
 with st.sidebar.expander("Filters", expanded=True):
     for col in filter_cols:
@@ -79,11 +96,17 @@ with st.sidebar.expander("Filters", expanded=True):
 
     query = st.text_area("Custom query") or "tuple()"
 
-# apply slicers and custom query
+# ==================================================================== #
+#                         FILTER APPLICATION                           #
+# ==================================================================== #
+# apply the slicers and custom query
 data = apply_slicers(data, filters)
 data = data.query(query, engine="python")
 
-# identify numeric columns to use as X/Y in regression plot.
+# ==================================================================== #
+#                         FINAL CONFIGURATION                          #
+# ==================================================================== #
+# identify numeric columns to use as X/Y in regression plot
 numeric_cols = data.select_dtypes("number").columns
 if len(numeric_cols) < 1:
     st.warning("No numeric columns found for plotting.")
@@ -98,6 +121,10 @@ with rightcol:  # plot setup selectors on the right
     huecol = st.selectbox("Color by", ["None"] + data.columns.tolist())
     if huecol == "None":
         huecol = None
+
+# ==================================================================== #
+#                            VISUALIZATION                             #
+# ==================================================================== #
 with leftcol:  # plot to the left
     fig = plot_regression(data, xcol, ycol, hue=huecol, regression=True)
     st.pyplot(fig)
