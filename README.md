@@ -6,6 +6,25 @@ Here is a list of articles and corresponding code folders:
 <table>
   <th>Article</th>
   <th style="text-align: center;">📂</th>
+
+  <tr>
+    <td colspan="2"> <strong>Data Science</strong>
+    </td>
+  <tr>
+  <tr>
+    <td>
+        Ad-hoc data filters in Streamlit
+        and corresponding
+        <a href="https://share.streamlit.io/samproell/samproell.io-code/main/posts/datascience/adhoc-filters-streamlit/st_adhoc_filters.py">
+            Streamlit App
+        </a>
+    </td>
+    <td>
+    <a href="posts/signal/peak-finding-python-js/">Folder</a>
+    </td>
+  </tr>
+
+
   <tr>
     <td colspan="2"> <strong>Remote PPG</strong>
     </td>
