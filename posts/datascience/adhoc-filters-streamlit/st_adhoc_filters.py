@@ -28,6 +28,7 @@ def create_slicer(df, col):
     elif col in df.select_dtypes(["object"]):
         options = df[col].dropna().unique()
         return st.multiselect(col, options, default=options)
+
     return None
 
 
@@ -107,24 +108,24 @@ data = data.query(query, engine="python")
 #                         FINAL CONFIGURATION                          #
 # ==================================================================== #
 # identify numeric columns to use as X/Y in regression plot
-numeric_cols = data.select_dtypes("number").columns
-if len(numeric_cols) < 1:
+numeric_vars = data.select_dtypes("number").columns
+if len(numeric_vars) < 1:
     st.warning("No numeric columns found for plotting.")
     st.stop()
 
 leftcol, rightcol = st.columns([2, 1])
 with rightcol:  # plot setup selectors on the right
-    xcol = st.selectbox("X variable", numeric_cols)
-    ycol = st.selectbox("Y variable", numeric_cols, index=len(numeric_cols)-1)
+    xvar = st.selectbox("X variable", numeric_vars)
+    yvar = st.selectbox("Y variable", numeric_vars, index=len(numeric_vars)-1)
 
     # hue column is optional - the "None" string is replaced by actual None
-    huecol = st.selectbox("Color by", ["None"] + data.columns.tolist())
-    if huecol == "None":
-        huecol = None
+    huevar = st.selectbox("Color by", ["None"] + data.columns.tolist())
+    if huevar == "None":
+        huevar = None
 
 # ==================================================================== #
 #                            VISUALIZATION                             #
 # ==================================================================== #
 with leftcol:  # plot to the left
-    fig = plot_regression(data, xcol, ycol, hue=huecol, regression=True)
+    fig = plot_regression(data, xvar, yvar, hue=huevar, regression=True)
     st.pyplot(fig)
