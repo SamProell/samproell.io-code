@@ -69,6 +69,9 @@ For all other data types, a multiselect box is created.
 In addition, for any subset that cannot be obtained through simple slicers,
 you may specify an arbitrary query which will be interpreted with
 `pd.DataFrame.query`.
+
+*The code behind this app is discussed in detail on
+[samproell.io](https://www.samproell.io) (post coming soon!).*
 """
 
 # ==================================================================== #
