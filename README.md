@@ -15,12 +15,12 @@ Here is a list of articles and corresponding code folders:
     <td>
         Ad-hoc data filters in Streamlit
         and corresponding
-        <a href="https://share.streamlit.io/samproell/samproell.io-code/main/posts/datascience/adhoc-filters-streamlit/st_adhoc_filters.py">
+        <a href="https://share.streamlit.io/samproell/adhoc-data-filters">
             Streamlit App
         </a>
     </td>
     <td>
-    <a href="posts/signal/peak-finding-python-js/">Folder</a>
+    <a href="https://github.com/SamProell/adhoc-data-filters">Repo</a>
     </td>
   </tr>
 
