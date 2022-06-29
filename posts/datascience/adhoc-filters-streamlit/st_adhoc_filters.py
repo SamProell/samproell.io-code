@@ -14,33 +14,34 @@ def read_data(uploaded_file):
 
 
 def create_slicer(df, col):
-    """Create a data filter depending on column data type (multiselect/slider).
+    """Create a data filter (slider/multiselect) and return user selection.
 
-    Filters are only created for 'number' and 'object' columns.
+    Filters are created for 'number', 'date' and 'object'/'category' types.
     Returns `None` otherwise.
     """
-    if col in df.select_dtypes(include="number"):
+    if col in df.select_dtypes(include=["number", "datetime"]):
         if col in df.select_dtypes(include="integer"):
             valmin, valmax = int(df[col].min()), int(df[col].max())
+        elif col in df.select_dtypes(include="datetime"):
+            valmin, valmax = df[col].min().date(), df[col].max().date()
         else:
             valmin, valmax = float(df[col].min()), float(df[col].max())
         return st.slider(col, valmin, valmax, (valmin, valmax))
-    elif col in df.select_dtypes(["object"]):
+    elif col in df.select_dtypes(["object", "category"]):
         options = df[col].dropna().unique()
         return st.multiselect(col, options, default=options)
 
     return None
 
 
-def apply_slicers(df, filters):
+def apply_slicer(df, col, selection):
     """Filter dataset according to slicer selections.
     """
-    for col, selection in filters.items():
-        if col in df.select_dtypes("number"):
-            df = df.query(f"{selection[0]} <= `{col}` <= {selection[1]}")
-        if col in df.select_dtypes(exclude=["number"]) and len(selection) > 0:
-            # empty selections are ignored, as they would lead to an empty set
-            df = df.query(f"{col} in @selection")
+    if col in df.select_dtypes(include=["number", "datetime"]):
+        low, high = selection
+        df = df.query(f"@low <= `{col}` <= @high")
+    if col in df.select_dtypes(exclude=["number", "datetime"]):
+        df = df.query(f"`{col}` in @selection")
     return df
 
 
@@ -104,7 +105,8 @@ with st.sidebar.expander("Filters", expanded=True):
 #                         FILTER APPLICATION                           #
 # ==================================================================== #
 # apply the slicers and custom query
-data = apply_slicers(data, filters)
+for col, selection in filters.items():
+    data = apply_slicer(data, col, selection)
 data = data.query(query, engine="python")
 
 # ==================================================================== #
