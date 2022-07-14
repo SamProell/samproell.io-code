@@ -13,7 +13,9 @@ Here is a list of articles and corresponding code folders:
   <tr>
   <tr>
     <td>
-        Ad-hoc data filters in Streamlit
+        <a href="https://www.samproell.io/posts/datascience/adhoc-data-filters-streamlit/">
+            Speed up data exploration with ad-hoc data filters in Streamlit
+        </a><br>
         and corresponding
         <a href="https://share.streamlit.io/samproell/adhoc-data-filters">
             Streamlit App
