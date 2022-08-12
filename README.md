@@ -25,7 +25,14 @@ Here is a list of articles and corresponding code folders:
     <a href="https://github.com/SamProell/adhoc-data-filters">Repo</a>
     </td>
   </tr>
-
+  <tr>
+    <td>
+        <a href="https://www.samproell.io/posts/datascience/covid-experience/">My personal COVID-19 experience: a data project</a>
+    </td>
+    <td>
+    <a href="posts/datascience/covid-experience/">Folder</a>
+    </td>
+  </tr>
 
   <tr>
     <td colspan="2"> <strong>Remote PPG</strong>
