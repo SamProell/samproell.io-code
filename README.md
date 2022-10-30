@@ -13,6 +13,14 @@ Here is a list of articles and corresponding code folders:
   <tr>
   <tr>
     <td>
+        <a href="https://www.samproell.io/posts/datascience/metadata-in-machinelearning">Managing multi-dimensional datasets with metadata in Python</a>
+    </td>
+    <td>
+    <a href="posts/datascience/metadata-in-machinelearning/">Folder</a>
+    </td>
+  </tr>
+  <tr>
+    <td>
         <a href="https://www.samproell.io/posts/datascience/adhoc-data-filters-streamlit/">
             Speed up data exploration with ad-hoc data filters in Streamlit
         </a><br>
