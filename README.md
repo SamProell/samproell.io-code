@@ -88,4 +88,14 @@ Here is a list of articles and corresponding code folders:
     <a href="posts/signal/peak-finding-python-js/">Folder</a>
     </td>
   </tr>
+  <tr>
+    <td>
+        <a href="https://www.samproell.io/posts/signal/ecg-library-comparison/">
+            ECG R peak detection in Python: a comparison of libraries
+        </a>
+    </td>
+    <td>
+    <a href="posts/signal/ecg-library-comparison/">Folder</a>
+    </td>
+  </tr>
 </table>
