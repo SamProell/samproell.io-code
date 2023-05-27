@@ -29,7 +29,8 @@ python benchmark.py path/to/dataset --parser nstdb
 ```
 
 You can extend the `PARSERS` dictionary in `utils.py` for additional datasets.
-
+Consider using ECG data readers provided by sleepecg, for example
+[`read_mitdb`](https://sleepecg.readthedocs.io/en/stable/api/datasets/#sleepecg.read_mitdb).
 
 [^slpdb-ref]: Y. Ichimaru and G. B. Moody, “Development of the
     polysomnographic database on CD-ROM,” *Psychiatry and Clinical
