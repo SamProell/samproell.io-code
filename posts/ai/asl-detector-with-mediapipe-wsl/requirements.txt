@@ -1,0 +1,5 @@
+click
+mediapipe==0.10.11
+mediapipe-model-maker==0.2.1.3
+numpy
+tqdm
