@@ -68,7 +68,7 @@ must be set as an environment variable if should be different from `./data`:
 DATA_ROOT="path/to/data/splits" python train_asl_detector.py
 ```
 
-All details
+All further details are discussed in the corresponding [blog post][samproell-post].
 
 [samproell-post]: https://samproell.io/posts/ai/asl-detector-with-mediapipe-wsl
 [signn-database]: https://www.kaggle.com/datasets/signnteam/asl-sign-language-pictures-minus-j-z
