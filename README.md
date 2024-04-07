@@ -6,7 +6,18 @@ Here is a list of articles and corresponding code folders:
 <table>
   <th>Article</th>
   <th style="text-align: center;">📂</th>
-
+  <tr>
+    <td colspan="2"> <strong>Artificial Intelligence</strong>
+    </td>
+  <tr>
+  <tr>
+    <td>
+        <a href="https://samproell.io/posts/ai/asl-detector-with-mediapipe-wsl">Learning the ASL fingerspelling alphabet with MediaPipe</a>
+    </td>
+    <td>
+    <a href="posts/ai/asl-detector-with-mediapipe-wsl">Folder</a>
+    </td>
+  </tr>
   <tr>
     <td colspan="2"> <strong>Data Science</strong>
     </td>
