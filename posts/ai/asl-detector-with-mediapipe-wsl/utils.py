@@ -1,3 +1,5 @@
+"""Some utility functions for working with the ASL detector dataset/model."""
+
 import pathlib
 
 import cv2
@@ -39,7 +41,7 @@ def plot_recognizer_predictions(
             if landmarks:
                 draw_hand_landmarks(arr, result.hand_landmarks[0])
         else:
-            preds.append("N/A")
+            preds.append("empty")
 
     fig, axarr = _plot_image_array(img_array, ncols)
     for i, (fname, pred) in enumerate(zip(filenames, preds)):
