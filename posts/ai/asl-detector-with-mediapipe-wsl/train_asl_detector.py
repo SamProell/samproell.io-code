@@ -140,6 +140,7 @@ results_df["result"] = np.where(
     "correct",
     np.where(results_df.pred.isin(["n/a", "empty"]), "not found", "incorrect"),
 )
+plt.figure()
 sns.histplot(
     data=results_df,
     x="label",
@@ -179,6 +180,7 @@ tsne = sklearn.manifold.TSNE()
 emb = tsne.fit_transform(embeddings)
 # %%
 embdf = pd.DataFrame(emb, columns=["X1", "X2"]).assign(label=class_indices)
+plt.figure()
 sns.scatterplot(
     data=embdf, x="X1", y="X2", hue="label", palette="Spectral", legend=False
 )

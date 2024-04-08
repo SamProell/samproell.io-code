@@ -1,7 +1,7 @@
 # Building an ASL alphabet detector with MediaPipe Model Maker
 
 The code provided here is thoroughly described in the post
-[on samproell.io][samproell-post].
+[on samproell.io][samproell.io-post].
 Using the MediaPipe model maker, we can customize a hand gesture recognition
 model to recognize characters from the ASL fingerspelling alphabet.
 
@@ -68,7 +68,7 @@ must be set as an environment variable if should be different from `./data`:
 DATA_ROOT="path/to/data/splits" python train_asl_detector.py
 ```
 
-All further details are discussed in the corresponding [blog post][samproell-post].
+All further details are discussed in the corresponding [blog post][samproell.io-post].
 
-[samproell-post]: https://samproell.io/posts/ai/asl-detector-with-mediapipe-wsl
+[samproell.io-post]: https://samproell.io/posts/ai/asl-detector-with-mediapipe-wsl
 [signn-database]: https://www.kaggle.com/datasets/signnteam/asl-sign-language-pictures-minus-j-z
